@@ -5,6 +5,13 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * Test.
+ *
+ * @author Maxim Dick (maxim1994barca@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 public class CalculatorTest  {
     @Test
     public void whenAddOnePlusOneThenTwo()  {
