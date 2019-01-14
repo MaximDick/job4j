@@ -36,8 +36,8 @@ public class Point {
     }
 
     public static void main(String[] args) {
-        Point a = new Point(8,6);
-        Point b = new Point(5, 2);
+        Point a = new Point(7, 9);
+        Point b = new Point(4, 5);
         // сделаем вызов метода
         System.out.println("Координаты точки A:");
         System.out.println( "x1 = " + a.x + "\ty1 = " + b.x );
