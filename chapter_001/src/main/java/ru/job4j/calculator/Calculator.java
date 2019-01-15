@@ -13,8 +13,8 @@ public class Calculator {
 	 * @param first первое слагаемое.
 	 * @param second - второе слагаемое.
      */
-	public void add(double first, double second){
-	    this.result = first + second;
+	public void add(double first, double second) {
+		this.result = first + second;
     }
 	/**
 	 * Возвращает результат
@@ -25,19 +25,19 @@ public class Calculator {
 	/**
 	 * Вычисляет разность двух чисел
      */
-	public void subtract(double first, double second){
+	public void subtract(double first, double second) {
 		this.result = first - second;
 	}
 	/**
 	 * Вычисляет частное
      */
-	public  void div(double first, double second){
+	public  void div(double first, double second) {
 		this.result = first / second;
 	}
 	/**
 	 * вычисляет произведение двух чисел
      */
-	public void multiple(double first, double second){
+	public void multiple(double first, double second) {
 		this.result = first * second;
 	}
 }

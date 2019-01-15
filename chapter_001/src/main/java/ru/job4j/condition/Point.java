@@ -40,9 +40,9 @@ public class Point {
         Point b = new Point(4, 5);
         // сделаем вызов метода
         System.out.println("Координаты точки A:");
-        System.out.println( "x1 = " + a.x + "\ty1 = " + b.x );
+        System.out.println("x1 = " + a.x + "\ty1 = " + b.x);
         System.out.println("Координаты точки B:");
-        System.out.println( "x2 = " + a.y + "\ty2 = " + b.y);
+        System.out.println("x2 = " + a.y + "\ty2 = " + b.y);
         //System.out.println();
         double result = a.distanceTo(b);
         System.out.println("Расстояние между точками А и В : " + result);
