@@ -7,15 +7,14 @@ package ru.job4j.max;
  */
  
  public class Max {
-     int result;
      /**
       * method max - Максиммум из 2 чисел.
       * @param first первое число.
       * @param second второе число.
-      * @return result
+      * @return max(first or second).
       * */
 	 public int max(int first, int second){
-	      this.result = first > second ? first : second;
-	 return this.result;
+
+	 return first > second ? first : second;
 	 }
  }
