@@ -9,7 +9,7 @@ package ru.job4j.loop;
 public class Factorial {
     /**
      * class considers Factorial 120 and Zero.
-     * param start
+     * @param start число
      * @return factorial
      */
     public int whenCalculateFactorialForFiveThenOneHundreedTwenty(int start) {
