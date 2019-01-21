@@ -14,7 +14,7 @@ import static org.junit.Assert.assertThat;
 	 @Test
 	 public void whenFirstLessSecond(){
 		 Max maxim = new Max();
-		 int result = maxim.max(4,2,6);
-		 assertThat(result, is(6));
+		 int result = maxim.max(8,2,6);
+		 assertThat(result, is(8));
 	 }
  }

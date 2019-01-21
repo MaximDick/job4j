@@ -14,9 +14,15 @@ package ru.job4j.max;
       * @param third третье число.
       * @return max(first or second or third).
       * */
+     public int max(int first, int second, int third){
+         return max(max(first, second),third);
+     }
 
-	 public int max(int first, int second, int third){
-	     return Math.max(Math.max(first, second),third);
+     public int max(int first, int second){
+         return  first > second ? first : second;
+     }
 
-	 }
+
+
+
 }
