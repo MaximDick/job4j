@@ -26,8 +26,6 @@ public class FactorialTest {
         //напишите здесь тест, проверяющий, что факториал для числа 0 равен 1.
         Factorial factZero = new Factorial();
         int result1 = factZero.whenCalculateFactorialForZeroThenOne(0);
-        assertThat(result1, is (1));
-
+        assertThat(result1, is(1));
     }
-
 }

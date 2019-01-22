@@ -20,7 +20,7 @@ public class Factorial {
         return factorial;
     }
 
-    public int whenCalculateFactorialForZeroThenOne(int start){
+    public int whenCalculateFactorialForZeroThenOne(int start) {
         int factorialZero = 1;
         for (int i = 0; i <= start; i++) {
             factorialZero *= i;
