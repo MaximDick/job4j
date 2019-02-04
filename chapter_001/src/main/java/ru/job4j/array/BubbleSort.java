@@ -16,12 +16,12 @@ public class BubbleSort {
 
     public int[] bubbleSortNumbers(int[] array) {
         for (int out = array.length - 1; out > 1; out--) {
-        for (int index = 0; index < array.length - 1; index++) {
-            if (array[index] > array[index + 1]) {
+        for (int in = 0; in < array.length - 1; in++) {
+            if (array[in] > array[in + 1]) {
                 int temp;
-                temp = array[index];
-                array[index] = array[index + 1];
-                array[index + 1] = temp;
+                temp = array[in];
+                array[in] = array[in + 1];
+                array[in + 1] = temp;
             }
         }
     }

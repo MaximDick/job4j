@@ -16,16 +16,16 @@ public class Board {
     public String paint(int width, int height) {
         StringBuilder screen = new StringBuilder();
         String ln = System.lineSeparator();
-        int i; int j;
-        for (i = 0; i < width; i++) {
-            for (j = 0; j < height; j++) {
+        int out; int in;
+        for (out = 0; out < width; out++) {
+            for (in = 0; in < height; in++) {
 
                 // условие проверки, что писать пробел или X
                 // Выше в задании мы определили закономерность,
                 // когда нужно проставлять X.
-                //i = width;
+                //out = width;
                 //j = height;
-                int sum = i + j;
+                int sum = out + in;
                 if ((sum) % 2 == 0) {
                         screen.append("X");
                 } else {
