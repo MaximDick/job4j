@@ -7,7 +7,6 @@ package ru.job4j.array;
  */
 
 public class MergingTwoArrays {
-
     /**
      *Method merge
      *@param arrayOne array element.
@@ -17,8 +16,6 @@ public class MergingTwoArrays {
      */
 
     public int[] mergeArrays(int[] arrayOne, int[] arrayTwo) {
-
-
 
         int[] result = new int[arrayOne.length + arrayTwo.length];
         int indexArray1 = 0, indexArrayTwo = 0, count = 0;
@@ -31,11 +28,9 @@ public class MergingTwoArrays {
             result[count++] = arrayOne[indexArray1++];
         }
 
-
         while (indexArrayTwo < arrayTwo.length) {
             result[count++] = arrayTwo[indexArrayTwo++];
         }
-
         return result;
     }
 }
