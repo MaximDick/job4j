@@ -27,7 +27,6 @@ public class MergingTwoArrays {
         while (indexArray1 < arrayOne.length) {
             result[count++] = arrayOne[indexArray1++];
         }
-
         while (indexArrayTwo < arrayTwo.length) {
             result[count++] = arrayTwo[indexArrayTwo++];
         }
