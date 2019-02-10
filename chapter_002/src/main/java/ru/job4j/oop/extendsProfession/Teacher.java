@@ -7,7 +7,5 @@ package ru.job4j.oop.extendsProfession;
  */
 public class Teacher extends Profession {
 
-    public void teachStudent(Student stud) {
-
-    }
+    public void teachStudent(Student stud) {}
 }

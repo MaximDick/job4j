@@ -7,5 +7,5 @@ package ru.job4j.oop.extendsProfession;
  */
 public class Engineer extends Profession{
 
-    public  void buildHouse(House house) {}
+    public void buildHouse(House house) {}
 }

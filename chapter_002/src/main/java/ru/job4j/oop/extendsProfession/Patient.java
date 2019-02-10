@@ -9,5 +9,4 @@ package ru.job4j.oop.extendsProfession;
 public class Patient {
 
     private String name;
-
 }

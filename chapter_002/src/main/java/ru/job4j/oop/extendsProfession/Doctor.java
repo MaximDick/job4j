@@ -7,8 +7,5 @@ package ru.job4j.oop.extendsProfession;
  */
 public class Doctor extends Profession {
 
-    public void DiagnoseHeal(Patient patient) {
-
-    }
-
+    public void DiagnoseHeal(Patient patient) {}
 }

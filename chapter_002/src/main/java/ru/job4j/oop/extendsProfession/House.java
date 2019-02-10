@@ -7,8 +7,7 @@ package ru.job4j.oop.extendsProfession;
  */
 
 class House {
-    int length;
-    int width;
-    int height;
-
+   private int length;
+   private int width;
+   private int height;
 }
