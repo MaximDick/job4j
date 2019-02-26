@@ -18,6 +18,16 @@ public class Item {
         this.create = create;
     }
 
+    public Item(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     public String getName() {
         return this.name;
     }

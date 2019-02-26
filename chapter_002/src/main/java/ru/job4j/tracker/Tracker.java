@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -102,7 +103,7 @@ public class Tracker {
 
 
     /**
-     * Метод для получения списка по имени.
+     * Метод для получения заявки по имени.
      * @param key название передаваемое в качестве параметра для сравнения.
      * @return result
      */
@@ -110,7 +111,7 @@ public class Tracker {
 
         Item[] result = new Item[this.position];
         for (int index = 0; index != position; index++) {
-            if (items[index].getName().equals(key)) {
+            if (items[index].getName() != null && result[index].getName().equals(key)) {
                 System.arraycopy(items, index, result, index, 1);
             }
         }
