@@ -110,12 +110,13 @@ public class Tracker {
     public Item[] findByName(String key) {
 
         Item[] result = new Item[this.position];
-        for (int index = 0; index != position; index++) {
-            if (items[index].getName() != null && result[index].getName().equals(key)) {
-                System.arraycopy(items, index, result, index, 1);
+        int cout = 0;
+        for (int index = 0; index < position; index++) {
+            if (items[index].getName().equals(key)) {
+                result[cout++] = items[index];
             }
         }
-        return result;
+        return Arrays.copyOf(result, cout);
     }
 
     /**
