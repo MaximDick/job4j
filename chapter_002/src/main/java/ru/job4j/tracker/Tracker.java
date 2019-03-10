@@ -16,7 +16,7 @@ public class Tracker {
     private Item[] items = new Item[100];
 
     /**
-     * Указателья чейки для новой заявки.
+     * Указатель ячейки для новой заявки.
      */
     private int position = 0;
 
@@ -44,8 +44,7 @@ public class Tracker {
     }
 
     /**
-     * Метод для редактирования заявок
-     *
+     * Метод для редактирования заявок.
      * @param id идентификационный номер.
      * @param item заявка.
      * @return result

@@ -17,10 +17,19 @@ public class Item {
         this.description = description;
         this.create = create;
     }
-
     public Item(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Item(String id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public Item(String id) {
+        this.id = id;
     }
 
     public void setName(String name) {
@@ -47,4 +56,15 @@ public class Item {
     public void setId(String id) {
         this.id = id;
     }
+
+    /**
+     * Переопределение метода toString()
+     */
+    @Override
+    public String toString() {
+        return "Название : " + getName()
+                + ", ID :  " + getId()
+                + ", Описание : " + getDescription();
+    }
 }
+
