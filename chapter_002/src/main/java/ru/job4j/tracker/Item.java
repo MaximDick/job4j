@@ -1,5 +1,11 @@
 package ru.job4j.tracker;
 
+/**
+ * @author Maxim Dick (maxim1994barca@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
+
 public class Item {
 
     public String id;
