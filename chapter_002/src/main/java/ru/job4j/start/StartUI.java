@@ -147,7 +147,7 @@ public class StartUI {
         String id = this.input.ask("Введите id : ");
         String name = this.input.ask("Введите name : ");
         String desc = this.input.ask("Введите описание : ");
-        Item item = new Item(id,name, desc);
+        Item item = new Item(id, name, desc);
         System.out.println("------------ Удаляемая заявка : " + item);
         this.tracker.delete(id);
     }
@@ -172,7 +172,7 @@ public class StartUI {
         System.out.println("------------ Поиск заявки по Id: ");
         String id = this.input.ask("Введите Id : ");
         Item item = tracker.findById(id);
-        if (item != null){
+        if (item != null) {
             System.out.println(item);
             } else {
             System.out.println("Item not found");
