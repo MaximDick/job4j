@@ -16,7 +16,7 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String []{"0", "test name", "desc", "6"}); // создаем StubInput с последовательностью действий
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"}); // создаем StubInput с последовательностью действий
         new StartUI(input, tracker).init();   // создаем StartUI и вызываем метод init()
         assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введенное при эмуляции.
     }
