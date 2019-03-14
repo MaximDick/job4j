@@ -1,7 +1,7 @@
 package ru.job4j.pseudo;
 
 import org.junit.Test;
-import ru.job4j.tracker.Tracker;
+
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -19,9 +19,12 @@ public class TriangleTest {
                 triangle.draw(),
                 is(
                         new StringBuilder()
-                            .append("  +\n")
-                            .append(" + +\n")
+                            .append("  +")
+                            .append(System.lineSeparator())
+                            .append(" +++")
+                            .append(System.lineSeparator())
                             .append("+++++")
+                            .append(System.lineSeparator())
                             .toString()
                 )
         );
