@@ -24,7 +24,6 @@ public class TriangleTest {
                             .append(" +++")
                             .append(System.lineSeparator())
                             .append("+++++")
-                            .append(System.lineSeparator())
                             .toString()
                 )
         );

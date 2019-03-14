@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.StringJoiner;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -66,16 +67,14 @@ public class PaintTest {
         assertThat(
                 this.out.toString(),
                 is(
-                        new StringBuilder()
-                                .append("execute before method")
-                                .append(System.lineSeparator())
-                                .append("  +")
-                                .append(System.lineSeparator())
-                                .append(" +++")
-                                .append(System.lineSeparator())
-                                .append("+++++")
-                                .append(System.lineSeparator())
-                                .append(System.lineSeparator())
+                        new StringJoiner(
+                                System.lineSeparator(), "",
+                                System.lineSeparator())
+                                .add("execute before method")
+                                .add("  +")
+                                .add(" +++")
+                                .add("+++++")
+                                //.add(System.lineSeparator())
                                 .toString()
                 )
         );

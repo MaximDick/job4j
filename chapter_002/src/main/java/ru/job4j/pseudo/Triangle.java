@@ -20,7 +20,6 @@ public class Triangle implements Shape {
             pic.append(" +++");
             pic.append(System.lineSeparator());
             pic.append("+++++");
-            pic.append(System.lineSeparator());
         return pic.toString();
     }
 
