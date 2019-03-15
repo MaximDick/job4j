@@ -89,7 +89,6 @@ public class StartUI {
             } else if (FINDBYNAME.equals(answer)) {
                 this.findByNameItem();
             } else if (EXIT.equals(answer)) {
-
                 System.out.println("Работа программы завершена");
                 System.out.println("Good bay");
                 break;
@@ -118,8 +117,14 @@ public class StartUI {
     private void findAllItem() {
         System.out.println("Список всех заявок :");
         this.tracker.findAll();
+        int numberItem = 1;
         for (Item item : this.tracker.findAll()) {
-            System.out.println("Имя заявки : " + item.getName());
+            System.out.println(" Заявка № " + numberItem++);
+            System.out.println("Name : " + item.getName());
+            System.out.println("Description : " + item.getDescription());
+            System.out.println("Create : " + item.getCreate());
+            System.out.println("Id : " + item.getId());
+            System.out.println("________________________________________");
         }
     }
 
@@ -190,7 +195,6 @@ public class StartUI {
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
         System.out.println("Select: ");
-
     }
 
     /**

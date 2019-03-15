@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.StringJoiner;
+
 /**
  * @author Maxim Dick (maxim1994barca@gmail.com)
  * @version $Id$
@@ -68,9 +70,11 @@ public class Item {
      */
     @Override
     public String toString() {
-        return "Название : " + getName()
-                + ", ID :  " + getId()
-                + ", Описание : " + getDescription();
+        return new StringJoiner(System.lineSeparator(), "", "")
+                .add("Name : " + getName())
+                .add("Description : " + getDescription())
+                .add("Id : " + getId())
+                .toString();
     }
 }
 
