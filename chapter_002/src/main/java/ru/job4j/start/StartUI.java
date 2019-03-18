@@ -1,9 +1,6 @@
 package ru.job4j.start;
 
-import ru.job4j.tracker.ConsoleInput;
-import ru.job4j.tracker.Input;
-import ru.job4j.tracker.MenuTracker;
-import ru.job4j.tracker.Tracker;
+import ru.job4j.tracker.*;
 
 /**
  * @author Maxim Dick (maxim1994barca@gmail.com)
@@ -12,40 +9,40 @@ import ru.job4j.tracker.Tracker;
  */
 
 public class StartUI {
-    /**
+   /* *//**
      * Константа меню для добавления новой заявки.
-     */
+     *//*
      private static final String ADD = "0";
 
-     /**
+     *//**
       * Констатнта для получения всех заявок.
-      */
+      *//*
      private static final String FINDALL = "1";
 
-    /**
+    *//**
      * Констатнта для редактирования заявки.
-     */
+     *//*
      private static final String EDITITEM = "2";
 
-    /**
+    *//**
      * Констатнта для удаления заявки.
-     */
+     *//*
      private static final String DELETE = "3";
 
-    /**
+    *//**
      * Констатнта для поиска заявок по Id.
-     */
+     *//*
      private static final String FINDBYID = "4";
 
-    /**
+    *//**
      * Констатнта для поиска заявок по Name.
-     */
+     *//*
      private static final String FINDBYNAME = "5";
 
-    /**
+    *//**
      * Констатнта для выхода из программы.
-     */
-     private static final String EXIT = "6";
+     *//*
+     private static final String EXIT = "6";*/
 
     /**
      * Получение данных от пользователя.
@@ -59,8 +56,8 @@ public class StartUI {
 
     /**
      * Конструктор инициализирующий поля.
-     * @param input ввод данных.
-     * @param tracker хранилище заявок.
+     *@param input ввод данных.
+     *@param tracker хранилище заявок.
      */
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
@@ -111,8 +108,8 @@ public class StartUI {
 
     /**
      * Метод реализует добавление новой заявки в хранилище.
-     *//*
-    private void createItem() {
+     */
+   /* private void createItem() {
         System.out.println("------------ Adding new item ------------");
         String name = this.input.ask("Please, provide item name: ");
         String desc = this.input.ask("Please, provide item desciption: ");
@@ -197,7 +194,7 @@ public class StartUI {
     }*/
 
 
-    private void showMenu() {
+    /*private void showMenu() {
         System.out.println("Меню. ");
         System.out.println("0. Add new Item");
         System.out.println("1. Show all items");
@@ -207,7 +204,7 @@ public class StartUI {
         System.out.println("5. Find items by name");
         System.out.println("6. Exit Program");
         System.out.println("Select: ");
-    }
+    }*/
 
     /**
      * Запускт программы.

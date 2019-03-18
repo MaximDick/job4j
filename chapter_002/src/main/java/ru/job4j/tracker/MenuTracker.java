@@ -3,27 +3,25 @@ package ru.job4j.tracker;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.job4j.start.StartUI.*;
-
 public class MenuTracker {
     /**
-     * @param хранит ссыдку на объект.
+     *@param хранит ссыдку на объект.
      */
     private  Input input;
     /**
-     * @param хранит ссылку на объект.
+     *@param хранит ссылку на объект.
      */
     private Tracker tracker;
     /**
-     * @param хранит ссылку на массив типа UserAction.
+     *@param хранит ссылку на массив типа UserAction.
      */
     private List<UserAction> actions = new ArrayList<>();
 
     /**
      * Конструктор.
      *
-     * @param input   объект типа Input
-     * @param tracker объект типа Tracker
+     *@param input   объект типа Input
+     *@param tracker объект типа Tracker
      */
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
@@ -43,7 +41,7 @@ public class MenuTracker {
      * Метод заполняет массив.
      */
     public void fillActions() {
-        this.actions.add(new AddItem(0, "Add program"));
+        this.actions.add(new AddItem(0, "1Add program"));
         this.actions.add(new ShowItems(1, "Show all items"));
         this.actions.add(new UpdateItem(2, "Edit item"));
         this.actions.add(new DeleteItem(3, "Delete item"));
@@ -74,9 +72,18 @@ public class MenuTracker {
 
 
     private class AddItem  implements UserAction {
+
+        public int key;
+        public String name;
+
+        public AddItem(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
+
         @Override
         public int key() {
-            return ADD;
+            return key;
         }
 
         /**
@@ -84,10 +91,10 @@ public class MenuTracker {
          */
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Adding new item ------------");
-            String name = this.input.ask("Please, provide item name: ");
-            String desc = this.input.ask("Please, provide item desciption: ");
+            String name = input.ask("Please, provide item name: ");
+            String desc = input.ask("Please, provide item desciption: ");
             Item item = new Item(name, desc);
-            this.tracker.add(item);
+            tracker.add(item);
             System.out.println("------------ New Item with Id : " + item.getId());
             System.out.println("------------ New Item with Name : " + item.getName());
             System.out.println("------------ New Item with Description : " + item.getDescription());
@@ -96,23 +103,33 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Add new Item.";
+            return String.format("%d. %s", key, name);
         }
 
     }
 
     private class ShowItems implements UserAction {
+        private int key;
+        private String name;
+
+        Tracker tracker;
+
+        public ShowItems(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
+
         @Override
         public int key() {
-            return FINDALL;
+            return key;
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("Find All item :");
-            this.tracker.findAll();
+            tracker.findAll();
             int numberItem = 1;
-            for (Item item : this.tracker.findAll()) {
+            for (Item item : tracker.findAll()) {
                 System.out.println(" Заявка № " + numberItem++);
                 System.out.println("Name : " + item.getName());
                 System.out.println("Description : " + item.getDescription());
@@ -124,27 +141,35 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Show all items";
+            return String.format("%d. %s", key, name); }
         }
-    }
+
 
 
     private class UpdateItem implements UserAction {
 
+        int key;
+        String name;
+
+        public UpdateItem(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
         @Override
         public int key() {
-            return EDITITEM;
+            return key;
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Replace item ------------");
-            String id = this.input.ask("Please, provide item id: ");
-            String name = this.input.ask("Please, provide item name: ");
-            String desc = this.input.ask("Please, provide item desciption: ");
+            String id = input.ask("Please, provide item id: ");
+            String name = input.ask("Please, provide item name: ");
+            String desc = input.ask("Please, provide item desciption: ");
             Item item = new Item(id, name, desc);
-            if (this.tracker.replace(id, item)) {
-                System.out.println("------------ Заявка после редактирования : " + item);
+            if (tracker.replace(id, item)) {
+                System.out.println("------------ Заявка после редактирования : ");
+                System.out.println(item);
             } else {
                 System.out.println("Item not found");
             }
@@ -153,43 +178,60 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Edit item";
+            return String.format("%d. %s", key, name);
         }
     }
 
     private class DeleteItem implements UserAction {
+        int key;
+        String name;
+
+        public DeleteItem(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
         @Override
         public int key() {
-            return DELETE;
+            return key;
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Delete item ------------");
-            String id = this.input.ask("Please, provide item id: ");
-            String name = this.input.ask("Please, provide item name: ");
-            String desc = this.input.ask("Please, provide item desciption: ");
-            Item item = new Item(id, name, desc);
-            System.out.println("------------ Удаляемая заявка : " + item);
-            this.tracker.delete(id);
+            String id = input.ask("Please, provide item id: ");
+            String name = input.ask("Please, provide item name: ");
+            String description = input.ask("Please, provide item desciption: ");
+            Item item = new Item(id, name, description);
+            System.out.println("------------ Удаляемая заявка : ");
+            System.out.println(item);
+            tracker.delete(id);
         }
 
         @Override
         public String info() {
-            return "Delete item";
+            return String.format("%d. %s", key, name);
         }
     }
 
     private class FindItemById implements UserAction {
+
+        int key;
+        String name;
+
+        public FindItemById(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
+
         @Override
         public int key() {
-            return FINDBYID;
+            return key;
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Find item by id : ");
-            String id = this.input.ask("Please, provide item id: ");
+            String id = input.ask("Please, provide item id: ");
             Item item = tracker.findById(id);
             if (item != null) {
                 System.out.println(item);
@@ -200,21 +242,29 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Find item by Id";
+            return String.format("%d. %s", key, name);
         }
     }
 
     private class FindItemByName implements UserAction {
+
+        int key;
+        String name;
+
+        public FindItemByName(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
         @Override
         public int key() {
-            return FINDBYNAME;
+            return key;
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             System.out.println("------------ Find item by name : ");
-            String name = this.input.ask("Please, provide item name: ");
-            for (Item item : this.tracker.findByName(name)) {
+            String name = input.ask("Please, provide item name: ");
+            for (Item item : tracker.findByName(name)) {
                 if (item != null) {
                     System.out.println(item);
                 }
@@ -223,14 +273,22 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Find item by Name";
+            return String.format("%d. %s", key, name);
         }
     }
 
     private class ExitProgram implements UserAction {
+
+        int key;
+        String name;
+
+        public ExitProgram(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
         @Override
         public int key() {
-            return EXIT;
+            return key;
         }
 
         @Override
@@ -240,7 +298,7 @@ public class MenuTracker {
 
         @Override
         public String info() {
-            return "Exit Program";
+            return String.format("%d. %s", key, name);
         }
     }
 
