@@ -41,7 +41,7 @@ public class MenuTracker {
      * Метод заполняет массив.
      */
     public void fillActions() {
-        this.actions.add(new AddItem(0, "1Add program"));
+        this.actions.add(new AddItem(0, "Add program"));
         this.actions.add(new ShowItems(1, "Show all items"));
         this.actions.add(new UpdateItem(2, "Edit item"));
         this.actions.add(new DeleteItem(3, "Delete item"));
