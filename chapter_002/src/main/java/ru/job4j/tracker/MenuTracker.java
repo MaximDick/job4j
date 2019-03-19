@@ -21,7 +21,7 @@ public class MenuTracker {
      * Конструктор.
      *
      *@param input   объект типа Input
-     *@param tracker объект типа Tracker
+
      */
     public MenuTracker(Input input, Tracker tracker) {
         this.input = input;
