@@ -112,7 +112,7 @@ public class MenuTracker {
         private int key;
         private String name;
 
-        Tracker tracker;
+       // Tracker tracker;
 
         public ShowItems(int key, String name) {
             this.key = key;

@@ -9,10 +9,10 @@ public class ConsoleInput implements Input {
 
     public String ask(String question) {
         System.out.println(question);
-        return scanner.next();
+        return scanner.nextLine();
     }
 
-    public int ask(String question, List<Integer> range) {
+    public int ask(String question,  List<Integer> range) {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
         for (int value : range) {
