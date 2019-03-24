@@ -6,7 +6,7 @@ import java.util.List;
 public class ValidateInput extends ConsoleInput {
     public int ask(String question, List<Integer> range) {
         boolean invalid = true;
-        int value = -1 ;
+        int value = -1;
         do {
             try {
                 value = super.ask(question, range);
