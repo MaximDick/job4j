@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.List;
 
 public class StubInput implements Input {
     /**
@@ -18,7 +17,6 @@ public class StubInput implements Input {
      * Поле считает количество вызовом метода ask.
      * При каждом вызове надо передвинуть указатель на новое число.
      */
-
     private int position;
 
     public StubInput(final String[] value) {
@@ -41,8 +39,8 @@ public class StubInput implements Input {
 
 
     @Override
-    public int ask(String question, List<Integer> range) {
-        throw new UnsupportedOperationException("Unsupported operation");
-        //return ;
+    public int ask(String question, int[] range) {
+        //throw new UnsupportedOperationException("Unsupported operation");
+        return this.value.length;
         }
 }

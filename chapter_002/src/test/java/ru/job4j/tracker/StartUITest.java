@@ -91,7 +91,6 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("Leo Messi", "Barcelona", 10));
         Item item2 = tracker.add(new Item("Luis Suarez", "Barcelona", 9));
         Item item3 = tracker.add(new Item("Ivan Rakitic", "Barcelona", 4));
-        //Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(new StubInput(new String[]{"1", "6"}), tracker).init();
         assertThat(
                 this.out.toString(),
