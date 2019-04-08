@@ -2,9 +2,6 @@ package ru.job4j.start;
 
 import ru.job4j.tracker.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Maxim Dick (maxim1994barca@gmail.com)
  * @version $Id$
