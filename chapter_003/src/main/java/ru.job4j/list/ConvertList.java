@@ -46,7 +46,6 @@ public class ConvertList {
      * @param list List of array.
      * @return List of Integer.
      */
-
     public List<Integer> convert(List<int[]> list) {
         List<Integer> result = new ArrayList<>();
         Iterator<int[]> it = list.iterator();
