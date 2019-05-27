@@ -48,12 +48,15 @@ public class StartUITest {
         System.setOut(this.stdout);
         System.out.println("execute after method");
     }
+
+    /**
+     * Добавление заявки*/
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "y"}); // создаем StubInput с последовательностью действий
         new StartUI(input, tracker).init();   // создаем StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введенное при эмуляции.
+        assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введенное при эмуляции.
     }
 
     @Test
@@ -77,7 +80,7 @@ public class StartUITest {
         Item item = tracker.add(new Item("test nameOne", "descOne"));
         Input input = new StubInput(new String[]{"3", item.getId(), "test nameOne", "descOne", "No", "0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name"));
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
 
     /**
