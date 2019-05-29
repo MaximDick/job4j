@@ -28,8 +28,8 @@ public class Tracker {
      * @param item новая заявка
      */
     public Item add(Item item) {
-        /*item.setId(this.generateId());
-        this.items[this.position++] = item;*/
+        item.setId(this.generateId());
+        //this.items[this.position++] = item;
         this.items.add(item);
         return item;
     }
