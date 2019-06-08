@@ -36,4 +36,9 @@ public class User implements Comparable<User> {
        final int rsl = Integer.compare(this.age, o.age);
         return rsl;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + getAge();
+    }
 }
