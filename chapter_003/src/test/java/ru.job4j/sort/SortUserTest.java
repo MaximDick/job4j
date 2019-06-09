@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 public class SortUserTest {
     @Test
-    public void whenSortedUserByAge(){
+    public void whenSortedUserByAge() {
         SortUser sortUser = new SortUser();
         List<User> list = new ArrayList<>();
         list.add(new User("Messi", 31));
@@ -27,7 +27,7 @@ public class SortUserTest {
     }
 
     @Test
-    public void whenSortedUserByName(){
+    public void whenSortedUserByName() {
         SortUser sortUser = new SortUser();
         List<User> list = new ArrayList<>();
         list.add(new User("Messi", 31));
@@ -40,7 +40,7 @@ public class SortUserTest {
     }
 
     @Test
-    public void whenSortedUserByFields(){
+    public void whenSortedUserByFields() {
         SortUser sortUser = new SortUser();
         List<User> list = new ArrayList<>();
         list.add(new User("Messi", 31));

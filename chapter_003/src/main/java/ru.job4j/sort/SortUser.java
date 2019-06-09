@@ -9,7 +9,7 @@ import java.util.*;
  * @since 0.1
  */
 
-public class SortUser{
+public class SortUser {
 /**
  * Sort by age.
  * @param list
