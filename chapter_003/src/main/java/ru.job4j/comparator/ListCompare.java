@@ -11,30 +11,18 @@ import java.util.Comparator;
 public class ListCompare implements Comparator<String> {
    @Override
     public int compare(String left, String right) {
-       int size = left.length();
-       if (left.length() < right.length()) {
-           size = right.length();
+        int rst = 0;
+        int compareLength = Integer.compare(left.length(), right.length());
+        for (int index = 0; index < (compareLength > 0 ? right.length() : left.length()); index++) {
+            rst = Character.compare(left.charAt(index), right.charAt(index));
+            if (rst != 0) {
+                break;
+            }
        }
-       char[] first = toCharArray(size, left);
-       char[] second = toCharArray(size, right);
-       int result = 0;
-       for (int index = 0; index < size; index++) {
-           if (Character.compare(first[index], second[index]) < 0) {
-               result = -1;
-               break;
-           } else if (Character.compare(first[index], second[index]) > 0) {
-               result = 1;
-               break;
-           }
+        // Если длина части слова разная, но короткое слово совпадает с частью длинного
+       if (rst == 0 && compareLength != 0) {
+           rst = compareLength;
        }
-       return result;
-   }
-
-   private char[] toCharArray(int size, String string) {
-       char[] values = new char[size];
-       for (int index = 0; index < string.length(); index++) {
-           values[index] = string.charAt(index);
-       }
-       return values;
+       return rst;
    }
 }
