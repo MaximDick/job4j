@@ -5,12 +5,12 @@ package ru.job4j.list;
  * @version $Id$
  * @since 0.1
  */
-public class User {
+ class User {
     private int id;
     private String name;
     private String city;
 
-    public User(int id, String name, String city) {
+     User(int id, String name, String city) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -27,6 +27,4 @@ public class User {
     public String getCity() {
         return this.city;
     }
-
-    
-}
+    }
