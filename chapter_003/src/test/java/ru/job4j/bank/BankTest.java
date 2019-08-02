@@ -73,7 +73,7 @@ public class BankTest {
      * Добавляем одного пользователя, создаем у него два счета.
      * Проверяем размер коллекции со счетами этого пользователя равен 2.
      */
-    /*@Test
+   /* @Test
     public void getUserAccounts() {
         Bank bank = new Bank();
         bank.addUser(new User("Dima", "12345"));
@@ -83,9 +83,9 @@ public class BankTest {
                 new Account(50.00, "1"),
                 new Account(50.00, "2")
         );
-        assertThat(bank.getUserAccounts("123456").size(), is(2));
-    }*/
-
+        assertThat(bank.getUserAccounts("123456"), is(expected));
+    }
+*/
     /**
      * Добавляем двух пользователей и у каждого из них создаем по одному счету
      * Осуществляем перевод со счета первого 40.00 единиц на счет второго.
