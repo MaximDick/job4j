@@ -5,7 +5,7 @@ package ru.job4j.bank;
  * @version $Id$
  * @since 0.1
  */
-public class User {
+public class User implements Comparable<User> {
     private String name;
     private String passport;
 
@@ -49,5 +49,11 @@ public class User {
             }
         }
         return valid;
+    }
+
+    @Override
+    public int compareTo(User user) {
+        int valid = this.name.compareTo(user.name);
+        return valid == 0 ? this.passport.compareTo(user.passport) : valid;
     }
 }

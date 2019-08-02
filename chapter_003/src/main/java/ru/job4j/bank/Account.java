@@ -27,14 +27,16 @@ public class Account {
         return this.requisites;
     }
 
-    boolean transfer(Account destination, double amount) {
-        boolean success = false;
-        if (amount > 0 && amount < this.values && destination != null) {
-            success = true;
-            this.values -= amount;
-            destination.values += amount;
-        }
-        return success;
+    /**
+     * Списание денег со счета
+     * */
+    public void subAmount(double amount) {
+        this.values -= amount;
+    }
+    /**
+     * Зачисление денег на счет.*/
+    public void addAmount(double amount) {
+        this.values += amount;
     }
 
     public String toString() {
