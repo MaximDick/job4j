@@ -1,11 +1,10 @@
 package ru.job4j.bank;
 
 import org.junit.Test;
-import ru.job4j.bank.exceptions.AccountAlreadyExistException;
 import ru.job4j.bank.exceptions.NoSuchAccountException;
 
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,10 +72,10 @@ public class BankTest {
      * Добавляем одного пользователя, создаем у него два счета.
      * Проверяем размер коллекции со счетами этого пользователя равен 2.
      */
-   /* @Test
+   @Test
     public void getUserAccounts() {
         Bank bank = new Bank();
-        bank.addUser(new User("Dima", "12345"));
+        bank.addUser(new User("Dima", "123456"));
         bank.addAccountToUser("123456", new Account(50.00, "1"));
         bank.addAccountToUser("123456", new Account(50.00, "2"));
         List<Account> expected = Arrays.asList(
@@ -85,7 +84,6 @@ public class BankTest {
         );
         assertThat(bank.getUserAccounts("123456"), is(expected));
     }
-*/
     /**
      * Добавляем двух пользователей и у каждого из них создаем по одному счету
      * Осуществляем перевод со счета первого 40.00 единиц на счет второго.

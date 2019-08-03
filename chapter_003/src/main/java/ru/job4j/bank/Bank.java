@@ -45,10 +45,9 @@ public void delete(User user) {
   *  @param passport
   */
  public User getUser(String passport) {
-     Optional<User> searched = this.base.keySet().stream()
+     return this.base.keySet().stream()
              .filter(user -> user.getPassport().equals(passport))
-             .findAny();
-     return searched.get();
+             .findAny().orElse(null);
     }
 
 /***
