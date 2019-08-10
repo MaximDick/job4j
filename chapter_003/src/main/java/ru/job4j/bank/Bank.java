@@ -50,18 +50,22 @@ public void delete(User user) {
              .findAny().orElse(null);
     }
 
-/***
+/**
  * Метод добавляет банковский счет для пользователя.
  * @param account - банковский счет.
  * @param passport - пользователь.
  */
+
 public void addAccountToUser(String passport, Account account) {
-    ArrayList<Account> temp = this.base.get(getUser(passport));
-    if (temp.indexOf(account) != -1) {
-        throw new AccountAlreadyExistException("Account already exist!");
-    }
+    User user = getUser(passport);
+
+    if (user != null) {
+        ArrayList<Account> temp = this.base.get(getUser(passport));
         temp.add(account);
+    }
+
 }
+
 
 
 /**
