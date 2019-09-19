@@ -8,6 +8,7 @@ import ru.job4j.start.StartUI;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.StringJoiner;
+import java.util.function.Consumer;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -20,21 +21,16 @@ import static org.junit.Assert.assertThat;
 
 public class StartUITest {
 
-    private final PrintStream stdout = System.out;
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final PrintStream out = System.out;
+    private final ByteArrayOutputStream bas = new ByteArrayOutputStream();
+    private final Consumer<String> output = new Consumer<String>() {
+        private final PrintStream stdout = new PrintStream(bas);
 
-
-    public String forStartUITest() {
-        return new StringJoiner(System.lineSeparator(), "", "")
-            .add("0 : Add program")
-            .add("1 : Show all items")
-            .add("2 : Edit item")
-            .add("3 : Delete item")
-            .add("4 : Find item by Id")
-            .add("5 : Find item by Name")
-            .add("6 : Exit Program")
-            .toString();
-    }
+        @Override
+        public void accept(String s) {
+            stdout.println(s);
+        }
+    };
 
 
     @Before
@@ -45,7 +41,7 @@ public class StartUITest {
 
     @After
     public void backOutput() {
-        System.setOut(this.stdout);
+        System.setOut(this.out);
         System.out.println("execute after method");
     }
 
@@ -55,7 +51,7 @@ public class StartUITest {
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "y"}); // создаем StubInput с последовательностью действий
-        new StartUI(input, tracker).init();   // создаем StartUI и вызываем метод init()
+        new StartUI(input, tracker, output).init();   // создаем StartUI и вызываем метод init()
         assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введенное при эмуляции.
     }
 
@@ -68,7 +64,7 @@ public class StartUITest {
         //создаём StubInput с последовательностью действий(производим замену заявки)
         Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "y"});
         // создаём StartUI и вызываем метод init()
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
@@ -79,7 +75,7 @@ public class StartUITest {
         //создаем первую заявку
         Item item = tracker.add(new Item("test nameOne", "descOne"));
         Input input = new StubInput(new String[]{"3", item.getId(), "test nameOne", "descOne", "No", "0", "test name", "desc", "y"});
-        new StartUI(input, tracker).init();
+        new StartUI(input, tracker, output).init();
         assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
 
@@ -92,9 +88,9 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("Leo Messi", "Barcelona", 10));
         Item item2 = tracker.add(new Item("Luis Suarez", "Barcelona", 9));
         Item item3 = tracker.add(new Item("Ivan Rakitic", "Barcelona", 4));
-        new StartUI(new StubInput(new String[]{"1", "y"}), tracker).init();
-        assertThat(
-                this.out.toString(),
+        new StartUI(new StubInput(new String[]{"1", "y"}), tracker, output).init();
+        /*assertThat(
+                this.output.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                             .add("execute before method")
@@ -121,6 +117,10 @@ public class StartUITest {
                             .toString()
                 )
         );
+        assertThat(this.output.toString(), is(expect));*/
+        assertThat(tracker.findAll().get(0).getName(), is("Leo Messi"));
+        assertThat(tracker.findAll().get(1).getName(), is("Luis Suarez"));
+        assertThat(tracker.findAll().get(2).getName(), is("Ivan Rakitic"));
         backOutput();
     }
 
@@ -134,9 +134,9 @@ public class StartUITest {
         Item item1 = tracker.add(new Item("Leo Messi", "Barcelona"));
         Item item2 = tracker.add(new Item("Luis Suarez", "Barcelona"));
         Input input = new StubInput(new String[]{"4", item1.getId(), "y"});
-        new StartUI(input, tracker).init();
-        assertThat(
-                this.out.toString(),
+        new StartUI(input, tracker, output).init();
+        /*assertThat(
+                this.output.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
                             .add("execute before method")
@@ -147,22 +147,23 @@ public class StartUITest {
                             .add("Id : " + item1.getId())
                             .toString()
                 )
-        );
+        );*/
+        assertThat(tracker.findById(item2.getId()).getName(), is("Luis Suarez"));
         backOutput();
     }
 
     /**
-     * FindById
+     * FindByName
      */
     @Test
-    public void whenAddThreeItemTrackerHasNewItemsThenFindByName() {
+    public void whenAddTwoItemTrackerHasNewItemsThenFindByName() {
         loadOutput();
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(new Item("Leo Messi", "Barcelona"));
         Item item2 = tracker.add(new Item("Luis Suarez", "Barcelona"));
         Input input = new StubInput(new String[]{"5", item2.getName(), "y"});
-        new StartUI(input, tracker).init();
-        assertThat(
+        new StartUI(input, tracker, output).init();
+        /*assertThat(
                 this.out.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
@@ -174,7 +175,8 @@ public class StartUITest {
                                 .add("Id : " + item2.getId())
                                 .toString()
                 )
-        );
+        );*/
+        assertThat(tracker.findByName("Leo Messi").get(0).getDescription(), is("Barcelona"));
         backOutput();
     }
 }
