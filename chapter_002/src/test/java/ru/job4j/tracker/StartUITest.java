@@ -32,6 +32,18 @@ public class StartUITest {
         }
     };
 
+    public String forStartUITest() {
+         return new StringJoiner(System.lineSeparator(), "", "")
+            .add("0 : Add program")
+            .add("1 : Show all items")
+            .add("2 : Edit item")
+            .add("3 : Delete item")
+            .add("4 : Find item by Id")
+            .add("5 : Find item by Name")
+            .add("6 : Exit Program")
+            .toString();
+    }
+
 
     @Before
     public void loadOutput() {
@@ -89,7 +101,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("Luis Suarez", "Barcelona", 9));
         Item item3 = tracker.add(new Item("Ivan Rakitic", "Barcelona", 4));
         new StartUI(new StubInput(new String[]{"1", "y"}), tracker, output).init();
-        /*assertThat(
+        assertThat(
                 this.output.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
@@ -117,10 +129,10 @@ public class StartUITest {
                             .toString()
                 )
         );
-        assertThat(this.output.toString(), is(expect));*/
+        /*assertThat(this.output.toString(), is(expect));
         assertThat(tracker.findAll().get(0).getName(), is("Leo Messi"));
         assertThat(tracker.findAll().get(1).getName(), is("Luis Suarez"));
-        assertThat(tracker.findAll().get(2).getName(), is("Ivan Rakitic"));
+        assertThat(tracker.findAll().get(2).getName(), is("Ivan Rakitic"));*/
         backOutput();
     }
 
@@ -135,7 +147,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("Luis Suarez", "Barcelona"));
         Input input = new StubInput(new String[]{"4", item1.getId(), "y"});
         new StartUI(input, tracker, output).init();
-        /*assertThat(
+        assertThat(
                 this.output.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
@@ -147,7 +159,7 @@ public class StartUITest {
                             .add("Id : " + item1.getId())
                             .toString()
                 )
-        );*/
+        );
         assertThat(tracker.findById(item2.getId()).getName(), is("Luis Suarez"));
         backOutput();
     }
@@ -163,7 +175,7 @@ public class StartUITest {
         Item item2 = tracker.add(new Item("Luis Suarez", "Barcelona"));
         Input input = new StubInput(new String[]{"5", item2.getName(), "y"});
         new StartUI(input, tracker, output).init();
-        /*assertThat(
+        assertThat(
                 this.out.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
@@ -175,7 +187,7 @@ public class StartUITest {
                                 .add("Id : " + item2.getId())
                                 .toString()
                 )
-        );*/
+        );
         assertThat(tracker.findByName("Leo Messi").get(0).getDescription(), is("Barcelona"));
         backOutput();
     }
