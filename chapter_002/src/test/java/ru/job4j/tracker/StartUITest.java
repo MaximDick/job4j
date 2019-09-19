@@ -7,6 +7,7 @@ import ru.job4j.start.StartUI;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.text.Format;
 import java.util.StringJoiner;
 import java.util.function.Consumer;
 
@@ -29,6 +30,11 @@ public class StartUITest {
         @Override
         public void accept(String s) {
             stdout.println(s);
+        }
+
+        @Override
+        public String toString() {
+            return bas.toString();
         }
     };
 
@@ -105,34 +111,18 @@ public class StartUITest {
                 this.output.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                            .add("execute before method")
                             .add(forStartUITest())
                             .add("Find All item :")
-                            .add(" Заявка № 1")
-                            .add("Name : " + item1.getName())
-                            .add("Description : " + item1.getDescription())
-                            .add("Create : " + item1.getCreate())
-                            .add("Id : " + item1.getId())
-                            .add("________________________________________")
-                            .add(" Заявка № 2")
-                            .add("Name : " + item2.getName())
-                            .add("Description : " + item2.getDescription())
-                            .add("Create : " + item2.getCreate())
-                            .add("Id : " + item2.getId())
-                            .add("________________________________________")
-                            .add(" Заявка № 3")
-                            .add("Name : " + item3.getName())
-                            .add("Description : " + item3.getDescription())
-                            .add("Create : " + item3.getCreate())
-                            .add("Id : " + item3.getId())
-                            .add("________________________________________")
+                          .add(String.format("Name: %s| Description: %s| Create %s| id: %s",
+                                  item1.getName(),item1.getDescription(),item1.getCreate(), item1.getId()))
+                          .add(String.format("Name: %s| Description: %s| Create %s| id: %s",
+                                        item2.getName(),item2.getDescription(),item2.getCreate(), item2.getId()))
+                          .add(String.format("Name: %s| Description: %s| Create %s| id: %s",
+                                        item3.getName(),item3.getDescription(),item3.getCreate(), item3.getId()))
                             .toString()
                 )
         );
-        /*assertThat(this.output.toString(), is(expect));
-        assertThat(tracker.findAll().get(0).getName(), is("Leo Messi"));
-        assertThat(tracker.findAll().get(1).getName(), is("Luis Suarez"));
-        assertThat(tracker.findAll().get(2).getName(), is("Ivan Rakitic"));*/
+
         backOutput();
     }
 
@@ -151,7 +141,6 @@ public class StartUITest {
                 this.output.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                            .add("execute before method")
                             .add(forStartUITest())
                             .add("------------ Find item by id : ")
                             .add("Name : " + item1.getName())
@@ -160,7 +149,6 @@ public class StartUITest {
                             .toString()
                 )
         );
-        assertThat(tracker.findById(item2.getId()).getName(), is("Luis Suarez"));
         backOutput();
     }
 
@@ -176,10 +164,9 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"5", item2.getName(), "y"});
         new StartUI(input, tracker, output).init();
         assertThat(
-                this.out.toString(),
+                this.output.toString(),
                 is(
                         new StringJoiner(System.lineSeparator(), "", System.lineSeparator())
-                                .add("execute before method")
                                 .add(forStartUITest())
                                 .add("------------ Find item by name : ")
                                 .add("Name : " + item2.getName())
@@ -188,7 +175,6 @@ public class StartUITest {
                                 .toString()
                 )
         );
-        assertThat(tracker.findByName("Leo Messi").get(0).getDescription(), is("Barcelona"));
         backOutput();
     }
 }

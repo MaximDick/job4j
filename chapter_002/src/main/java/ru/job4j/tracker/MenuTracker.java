@@ -106,17 +106,10 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker, Consumer<String> output) {
+
             output.accept("Find All item :");
             tracker.findAll();
             int numberItem = 1;
-            /*for (Item item : tracker.findAll()) {
-                System.out.println(" Заявка № " + numberItem++);
-                System.out.println("Name : " + item.getName());
-                System.out.println("Description : " + item.getDescription());
-                System.out.println("Create : " + item.getCreate());
-                System.out.println("Id : " + item.getId());
-                System.out.println("________________________________________");
-            }*/
             for (Item item: tracker.findAll()) {
                 output.accept(String.format("Name: %s| Description: %s| Create %s| id: %s",
                         item.getName(), item.getDescription(), item.getCreate(), item.getId()));
@@ -177,7 +170,7 @@ public class MenuTracker {
             String id = input.ask("Please, provide item id: ");
             Item item = tracker.findById(id);
             if (item != null) {
-                output.accept(String.format("Item: %s", item));
+                output.accept(String.format("%s",item));
             } else {
                 output.accept("Item not found");
             }
@@ -197,7 +190,7 @@ public class MenuTracker {
             String name = input.ask("Please, provide item name: ");
             for (Item item : tracker.findByName(name)) {
                 if (item != null) {
-                    output.accept(String.format("Item: $s", item ));
+                    output.accept(String.format("%s", item ));
                 }
             }
         }
