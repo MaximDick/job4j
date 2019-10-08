@@ -27,7 +27,7 @@ public class ProfileTest {
         List<Profile> profiles = Arrays.asList(
                 new Profile(new Address("Moscow", "Sadovaya", 16, 28)),
                 new Profile(new Address("Nizhniy Novgorod", "Minina", 24, 21)),
-                new Profile(new Address("Vladimir", "Gagarina", 41, 32)));
+                new Profile(new Address("Moscow", "Baumana", 16, 28)));
 
         Profile profile = new Profile(new Address("Moscow", "Baumana", 16, 28));
         List<Address> result = profile.collect(profiles);
