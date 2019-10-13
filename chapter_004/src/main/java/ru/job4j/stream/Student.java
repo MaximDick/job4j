@@ -1,5 +1,7 @@
 package ru.job4j.stream;
 
+import java.util.stream.Stream;
+
 /**
  * @author Maxim Dick (maxim1994barca@gmail.com)
  * @version $Id$
@@ -13,11 +15,23 @@ public class Student {
      * */
     int score;
 
-    public Student(int score) {
+    String surName;
+
+
+    public Student(String surName, int score) {
+        this.surName = surName;
         this.score = score;
     }
 
+//    public Student(String surName) {
+//        this.surName = surName;
+//    }
+
     public int getScore() {
         return score;
+    }
+
+    public String getSurName() {
+        return surName;
     }
 }

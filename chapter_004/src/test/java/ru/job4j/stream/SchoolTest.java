@@ -2,10 +2,10 @@ package ru.job4j.stream;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -18,12 +18,12 @@ public class SchoolTest {
     /**
      * Students list.
      */
-    private List<Student> students = Arrays.asList(new Student(45),
-            new Student(58),
-            new Student(85),
-            new Student(74),
-            new Student(90),
-            new Student(65));
+    private List<Student> students = Arrays.asList(new Student("Ivanov", 45),
+            new Student("Cheryshev", 58),
+            new Student("Arshavin", 85),
+            new Student("Fedorov", 74),
+            new Student("Fetisov", 90),
+            new Student("Stalin", 65));
 
     /**
      * Getting a filtered list of class A.*/
@@ -74,5 +74,19 @@ public class SchoolTest {
             }
         }
         assertThat(result, is(expected));
+    }
+
+
+    @Test
+    public void whenListToMap() {
+        School school = new School();
+        List<Student> list = new ArrayList<>();
+        list.add(new Student("Messi", 94));
+        list.add(new Student("Ronaldo", 93));
+        list.add(new Student("Pelle", 91));
+        list.add(new Student("Cheryshev", 88));
+        list.add(new Student("Xavi", 98));
+        Map<String, Student> result = school.convertListToMap(list);
+        assertThat(result.get("Messi").getScore(), is(94));
     }
 }
