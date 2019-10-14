@@ -1,7 +1,5 @@
 package ru.job4j.stream;
 
-import java.util.stream.Stream;
-
 /**
  * @author Maxim Dick (maxim1994barca@gmail.com)
  * @version $Id$
