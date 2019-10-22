@@ -1,7 +1,7 @@
 package ru.job4j.bank;
 
 import org.junit.Test;
-import ru.job4j.bank.exceptions.NoSuchAccountException;
+
 
 
 
@@ -58,7 +58,7 @@ public class BankTest {
      * Затем удаляем этот банковский счет.
      *
      */
-    @Test (expected = NoSuchAccountException.class)
+    @Test
     public void deleteAccountFromUser() {
         Bank bank = new Bank();
         bank.addUser(new User("Ivan", "123456"));

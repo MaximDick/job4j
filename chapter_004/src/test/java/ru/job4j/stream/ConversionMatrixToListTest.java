@@ -25,7 +25,4 @@ public class ConversionMatrixToListTest {
         List<Integer> result = new ConversionMatrixToList().convertMatrixToList(matrix);
         assertThat(result, is(expected));
     }
-
-
-
 }

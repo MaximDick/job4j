@@ -1,11 +1,6 @@
 package ru.job4j.bank;
 
 
-import ru.job4j.bank.exceptions.AccountAlreadyExistException;
-import ru.job4j.bank.exceptions.NoSuchAccountException;
-import ru.job4j.bank.exceptions.UserAlreadyExistExeption;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,9 +40,9 @@ public void delete(User user) {
   *  @param passport
   */
  public User getUser(String passport) {
-     return this.base.keySet().stream()
-             .filter(user -> user.getPassport().equals(passport))
-             .findAny().orElse(null);
+     return this.base.keySet()
+             .stream().filter(e ->
+                     e.getPassport().equals(passport)).findFirst().orElse(null);
     }
 
 /**
@@ -57,12 +52,11 @@ public void delete(User user) {
  */
 
 public void addAccountToUser(String passport, Account account) {
-    User user = getUser(passport);
-
-    if (user != null) {
-        ArrayList<Account> temp = this.base.get(getUser(passport));
-        temp.add(account);
-    }
+    this.base.get(this.base.keySet()
+    .stream()
+            .filter(e ->
+            e.getPassport().equals(passport)).findFirst().orElse(null))
+            .add(account);
 
 }
 
@@ -72,14 +66,12 @@ public void addAccountToUser(String passport, Account account) {
  * Метод удаляет счет пользователя.
  * @param account - банковский счет.
  * @param passport - пользователь.
- * @throws NoSuchAccountException if can't find this account.
  */
-public void deleteAccountFromUser(String passport, Account account) throws NoSuchAccountException {
-    ArrayList<Account> temp = this.base.get(getUser(passport));
-    if (temp.indexOf(account) < 0) {
-        throw new NoSuchAccountException("No such account!");
-    }
-    temp.remove(account);
+public void deleteAccountFromUser(String passport, Account account)  {
+    this.base.get(this.base.keySet()
+    .stream()
+    .filter(e -> e.getPassport().equals(passport)).findFirst().orElse(null))
+    .remove(account);
 }
 
 /**
@@ -107,16 +99,12 @@ public List<User> getAllUsers() {
  * Метод возвращает аккаунт пользователя в результате поиска по паспорту и реквезитам.
  * @param passport номер паспорта пользователя.
  * @param requisite реквизиты пользователя.
- * @throws NoSuchAccountException if can't find this account.
  * @return найденный аккаунт.
  */
-public Account getOneUserAccount(String passport, String requisite) throws NoSuchAccountException {
-    List<Account> accounts = getUserAccounts(passport);
-    int index = accounts.indexOf(new Account(0, requisite));
-    if (index < 0) {
-        throw new NoSuchAccountException("No such account!");
-    }
-    return accounts.get(index);
+public Account getOneUserAccount(String passport, String requisite) {
+    return getUserAccounts(passport)
+            .stream()
+            .filter(e -> e.getRequisites().equals(requisite)).findFirst().orElse(null);
 }
 
 /**
@@ -144,7 +132,6 @@ public boolean transferMoney(String srcPassport, String srcRequisite, String des
     }
     return valid;
 }
-
 
 public String toString() {
     return "Bank{" + "accounts=" + base + "}";
