@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Maxim Dick (maxim1994barca@gmail.com)
@@ -10,9 +11,8 @@ import java.util.*;
 
 public class Tracker {
     /***
-     * Массив для хранения заявок.
+     * ArrayList для хранения заявок.
      */
-    //private Item[] items = new Item[100];
     private List<Item> items = new ArrayList<>();
 
     /**
@@ -29,7 +29,6 @@ public class Tracker {
      */
     public Item add(Item item) {
         item.setId(this.generateId());
-        //this.items[this.position++] = item;
         this.items.add(item);
         return item;
     }
@@ -97,13 +96,15 @@ public class Tracker {
      * @return result
      */
     public List<Item> findByName(String key) {
-        List<Item> result = new ArrayList<>();
-        for (Item i : items) {
-            if (i.getName().equals(key)) {
-                result.add(i);
-            }
-        }
-        return result;
+//        List<Item> result = new ArrayList<>();
+//        for (Item i : items) {
+//            if (i.getName().equals(key)) {
+//                result.add(i);
+//            }
+//        }
+//        return result;
+        return items.stream()
+                .filter(x -> x.getName().equals(key)).collect(Collectors.toList());
     }
 
     /**
@@ -112,13 +113,17 @@ public class Tracker {
      * @return result
      */
     public Item findById(String id) {
-        Item result = null;
-        for (Item i : items) {
-            if (i.getId().equals(id)) {
-                result = i;
-                break;
-            }
-        }
-        return result;
+//        Item result = null;
+//        for (Item i : items) {
+//            if (i.getId().equals(id)) {
+//                result = i;
+//                break;
+//            }
+//        }
+//        return result;
+//    }
+
+        return items.stream()
+                .filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }
 }
