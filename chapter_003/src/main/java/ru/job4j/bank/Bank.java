@@ -52,12 +52,12 @@ public void delete(User user) {
  */
 
 public void addAccountToUser(String passport, Account account) {
-    this.base.get(this.base.keySet()
+    this.base.keySet()
     .stream()
-            .filter(e ->
-            e.getPassport().equals(passport)).findFirst().orElse(null))
-            .add(account);
-
+            .filter(e -> e.getPassport().equals(passport))
+            .findFirst()
+            .map(user -> base.get(user))
+            .ifPresent(a -> a.add(account));
 }
 
 
@@ -68,10 +68,12 @@ public void addAccountToUser(String passport, Account account) {
  * @param passport - пользователь.
  */
 public void deleteAccountFromUser(String passport, Account account)  {
-    this.base.get(this.base.keySet()
+    this.base.keySet()
     .stream()
-    .filter(e -> e.getPassport().equals(passport)).findFirst().orElse(null))
-    .remove(account);
+    .filter(e -> e.getPassport().equals(passport))
+    .findFirst()
+    .map(user -> this.base.get(user))
+    .ifPresent(a -> a.remove(account));
 }
 
 /**
@@ -104,7 +106,9 @@ public List<User> getAllUsers() {
 public Account getOneUserAccount(String passport, String requisite) {
     return getUserAccounts(passport)
             .stream()
-            .filter(e -> e.getRequisites().equals(requisite)).findFirst().orElse(null);
+            .filter(u -> u.getRequisites().equals(requisite))
+            .findFirst()
+            .orElse(null);
 }
 
 /**
