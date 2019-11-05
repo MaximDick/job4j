@@ -170,7 +170,7 @@ public class MenuTracker {
             String id = input.ask("Please, provide item id: ");
             Item item = tracker.findById(id);
             if (item != null) {
-                output.accept(String.format("%s",item));
+                output.accept(String.format("%s", item));
             } else {
                 output.accept("Item not found");
             }
@@ -190,7 +190,7 @@ public class MenuTracker {
             String name = input.ask("Please, provide item name: ");
             for (Item item : tracker.findByName(name)) {
                 if (item != null) {
-                    output.accept(String.format("%s", item ));
+                    output.accept(String.format("%s", item));
                 }
             }
         }

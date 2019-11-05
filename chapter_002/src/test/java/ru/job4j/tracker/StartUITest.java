@@ -114,11 +114,11 @@ public class StartUITest {
                             .add(forStartUITest())
                             .add("Find All item :")
                           .add(String.format("Name: %s| Description: %s| Create %s| id: %s",
-                                  item1.getName(),item1.getDescription(),item1.getCreate(), item1.getId()))
+                                  item1.getName(), item1.getDescription(), item1.getCreate(), item1.getId()))
                           .add(String.format("Name: %s| Description: %s| Create %s| id: %s",
-                                        item2.getName(),item2.getDescription(),item2.getCreate(), item2.getId()))
+                                        item2.getName(), item2.getDescription(), item2.getCreate(), item2.getId()))
                           .add(String.format("Name: %s| Description: %s| Create %s| id: %s",
-                                        item3.getName(),item3.getDescription(),item3.getCreate(), item3.getId()))
+                                        item3.getName(), item3.getDescription(), item3.getCreate(), item3.getId()))
                             .toString()
                 )
         );

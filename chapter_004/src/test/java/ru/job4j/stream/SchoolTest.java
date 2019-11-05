@@ -13,12 +13,13 @@ public class SchoolTest {
 
     /**
      * Object school.*/
-    private School school = new School();
+     private School school = new School();
 
     /**
      * Students list.
      */
-    private List<Student> students = Arrays.asList(new Student("Ivanov", 45),
+    private List<Student> students = List.of(
+            new Student("Ivanov", 45),
             new Student("Cheryshev", 58),
             new Student("Arshavin", 85),
             new Student("Fedorov", 74),
@@ -89,4 +90,12 @@ public class SchoolTest {
         Map<String, Student> result = school.convertListToMap(list);
         assertThat(result.get("Messi").getScore(), is(94));
     }
+
+    @Test
+    public void whenScoreMoreBoundThan() {
+          List<Student> result = school.levelOf(students, 85);
+        assertThat(result.size(), is(1));
+    }
+
+
 }
