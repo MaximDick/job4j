@@ -13,11 +13,11 @@ import static org.junit.Assert.assertThat;
 public class PhoneDictionaryTest {
     @Test
     public void whenFindByName() {
-        PhoneDictionary phones = new PhoneDictionary();
+        var phones = new PhoneDictionary();
         phones.add(
                 new Person("Leo", "Messi", "89230432288", "Barcelona")
         );
-        List<Person> persons = phones.find("Leo");
+        var persons = phones.find("Leo");
         assertThat(persons.iterator().next().getSurname(), is("Messi"));
     }
 }

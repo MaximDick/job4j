@@ -9,7 +9,7 @@ import java.util.LinkedList;
  */
 
 public class PriorityQueue {
-    private LinkedList<Task> tasks = new LinkedList<>();
+    private LinkedList<Task> tasks = new LinkedList<Task>();
 
     /**
      * Метод вставляет в нужную позицию элемент.
@@ -19,7 +19,7 @@ public class PriorityQueue {
      */
     public void put(Task task) {
         //TODO добавить вставку в связанный список.
-        for (int i = 0; i <= tasks.size(); i++) {
+        for (var i = 0; i <= tasks.size(); i++) {
             if (tasks.isEmpty() || task.getPriority() < tasks.get(i).getPriority()) {
                 tasks.add(i, task);
                 break;
