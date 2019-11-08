@@ -17,62 +17,62 @@ public class SortUserTest {
     @Test
     public void whenSortedUserByAge() {
         SortUser sortUser = new SortUser();
-        List<User> list = List.of(
-                new User("Messi", 31),
-                new User("Suarez", 32),
-                new User("Neymar", 27),
-                new User("Xavi", 39),
-                new User("Iniesta", 35));
+        List<User> list = new ArrayList<>();
+                list.add(new User("Messi", 31));
+                list.add(new User("Suarez", 32));
+                list.add(new User("Neymar", 27));
+                list.add(new User("Xavi", 39));
+                list.add(new User("Iniesta", 35));
 
         Set<User> result = sortUser.sort(list);
-        assertThat(result.iterator().next().getAge(), is(27));
+        List<User> expected = List.of(
+                new User("Neymar", 27),
+                new User("Messi", 31),
+                new User("Suarez", 32),
+                new User("Iniesta", 35),
+                new User("Xavi", 39)
+        );
+        assertThat(result.toString(), is(expected.toString()));
     }
 
     @Test
     public void whenSortedUserByName() {
-//        SortUser sortUser = new SortUser();
-//        List<User> list = new ArrayList<>();
-//        list.add(new User("Messi", 31));
-//        list.add(new User("Suarez", 32));
-//        list.add(new User("Neymar", 27));
-//        list.add(new User("Xavi", 39));
-//        list.add(new User("Iniesta", 35));
-//        List<User> result = sortUser.sortNameLength(list);
-//        assertThat(result.toString(), is("[Xavi 39, Messi 31, Suarez 32, Neymar 27, Iniesta 35]"));
-
-        List<User> users = List.of(
-        new User("Messi", 31),
-        new User("Suarez", 32),
-        new User("Ronaldinho", 27));
         SortUser sortUser = new SortUser();
-        List<User> result = sortUser.sortNameLength(users);
-        List<User> check = List.of(
+        List<User> list = new ArrayList<>();
+                list.add(new User("Suarez", 32));
+                list.add(new User("Ronaldinho", 39));
+                list.add(new User("Messi", 31));
+
+        List<User> result = sortUser.sortNameLength(list);
+        List<User> expected = List.of(
                 new User("Messi", 31),
                 new User("Suarez", 32),
-                new User("Ronaldinho", 27)
+                new User("Ronaldinho", 39)
         );
-        assertThat(result, is(check));
+        assertThat(result.toString(), is(expected.toString()));
     }
 
     @Test
     public void whenSortedUserByFields() {
-//        SortUser sortUser = new SortUser();
-//        List<User> list = new ArrayList<>();
-//        list.add(new User("Messi", 31));
-//        list.add(new User("Messi", 19));
-//        list.add(new User("Neymar", 27));
-//        list.add(new User("Valdes", 39));
-//        list.add(new User("Henry", 35));
-
         SortUser sortUser = new SortUser();
-        List<User> list = List.of(
-                new User("Messi", 31),
-                new User("Suarez", 32),
-                new User("Neymar", 27),
-                new User("Xavi", 39),
-                new User("Iniesta", 35));
+        List<User> list = new ArrayList<>();
+        list.add(new User("Messi", 31));
+        list.add(new User("Messi", 19));
+        list.add(new User("Neymar", 27));
+        list.add(new User("Valdes", 39));
+        list.add(new User("Henry", 35));
+        list.add(new User("Henry", 30));
 
         List<User> result = sortUser.sortByAllFields(list);
-        assertThat(result.toString(), is("[Henry 35, Messi 19, Messi 31, Neymar 27, Valdes 39]"));
+
+        List<User> expected = List.of(
+                new User("Henry", 30),
+                new User("Henry", 35),
+                new User("Messi", 19),
+                new User("Messi", 31),
+                new User("Neymar", 27),
+                new User("Valdes", 39)
+        );
+        assertThat(result.toString(), is(expected.toString()));
     }
 }
