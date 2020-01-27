@@ -14,7 +14,7 @@ public class FactTest {
     @Test
     public void whenFactorial5IsEqualTo11() {
        int rsl =  Fact.calc(5);
-       assertThat(rsl, is(11));
+       assertThat(rsl, is(120));
     }
 
 }

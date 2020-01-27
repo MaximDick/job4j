@@ -9,7 +9,7 @@ public class CountTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void whenGreaterthenFinish() {
-        Count.add(10,2);
+        Count.add(10, 2);
     }
 
     @Test()
