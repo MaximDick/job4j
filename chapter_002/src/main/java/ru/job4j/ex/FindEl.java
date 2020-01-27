@@ -12,7 +12,7 @@ public class FindEl {
         }
 
         if (rsl == -1)  {
-            throw new ElementNotFounfException("Not found index");
+            throw new ElementNotFounfException();
         }
         return rsl;
     }
